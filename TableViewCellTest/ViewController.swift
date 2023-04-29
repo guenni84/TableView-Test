@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         
         myArray.append(Item(name: "Koffer", gewicht: 25, eingepackt: true, anzahl: 2))
         myArray.append(Item(name: "Fahrrad", gewicht: 30, eingepackt: true, anzahl: 1))
+        myArray.append(Item(name: "Tasse", gewicht: 1, eingepackt: true, anzahl: 3))
         
         print(myArray)
     }
@@ -74,6 +75,9 @@ extension ViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { (action, view, completionHandler) in
             // Fügen Sie hier den Code ein, um den Artikel zu löschen
             print("Löschen")
+            self.myArray.remove(at: indexPath.row)
+            tableView.reloadData()
+            print(self.myArray)
             completionHandler(true)
         }
         
@@ -84,6 +88,7 @@ extension ViewController: UITableViewDelegate {
         // Erstellen einer neuen Aktion mit einem Titel und einer Hintergrundfarbe
         let editAction = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
             // Fügen Sie hier den Code ein, um den Artikel zu archivieren
+            print("Editieren")
             completionHandler(true)
         }
         
